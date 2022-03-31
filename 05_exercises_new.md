@@ -16,246 +16,22 @@ output:
 
 ```r
 library(tidyverse)     # for data cleaning and plotting
-```
-
-```
-## Warning: package 'tidyverse' was built under R version 4.1.2
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.4     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'forcats' was built under R version 4.1.2
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(gardenR)       # for Lisa's garden data
 library(lubridate)     # for date manipulation
-```
-
-```
-## 
-## Attaching package: 'lubridate'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     date, intersect, setdiff, union
-```
-
-```r
 library(openintro)     # for the abbr2state() function
-```
-
-```
-## Warning: package 'openintro' was built under R version 4.1.2
-```
-
-```
-## Loading required package: airports
-```
-
-```
-## Warning: package 'airports' was built under R version 4.1.2
-```
-
-```
-## Loading required package: cherryblossom
-```
-
-```
-## Warning: package 'cherryblossom' was built under R version 4.1.2
-```
-
-```
-## Loading required package: usdata
-```
-
-```
-## Warning: package 'usdata' was built under R version 4.1.2
-```
-
-```r
 library(palmerpenguins)# for Palmer penguin data
 library(maps)          # for map data
-```
-
-```
-## Warning: package 'maps' was built under R version 4.1.2
-```
-
-```
-## 
-## Attaching package: 'maps'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     map
-```
-
-```r
 library(ggmap)         # for mapping points on maps
-```
-
-```
-## Warning: package 'ggmap' was built under R version 4.1.2
-```
-
-```
-## Google's Terms of Service: https://cloud.google.com/maps-platform/terms/.
-```
-
-```
-## Please cite ggmap if you use it! See citation("ggmap") for details.
-```
-
-```r
 library(gplots)        # for col2hex() function
-```
-
-```
-## Warning: package 'gplots' was built under R version 4.1.2
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 library(RColorBrewer)  # for color palettes
 library(sf)            # for working with spatial data
-```
-
-```
-## Warning: package 'sf' was built under R version 4.1.2
-```
-
-```
-## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE
-```
-
-```r
 library(leaflet)       # for highly customizable mapping
-```
-
-```
-## Warning: package 'leaflet' was built under R version 4.1.2
-```
-
-```r
 library(ggthemes)      # for more themes (including theme_map())
-```
-
-```
-## Warning: package 'ggthemes' was built under R version 4.1.2
-```
-
-```r
 library(plotly)        # for the ggplotly() - basic interactivity
-```
-
-```
-## Warning: package 'plotly' was built under R version 4.1.3
-```
-
-```
-## 
-## Attaching package: 'plotly'
-```
-
-```
-## The following object is masked from 'package:ggmap':
-## 
-##     wind
-```
-
-```
-## The following object is masked from 'package:ggplot2':
-## 
-##     last_plot
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     filter
-```
-
-```
-## The following object is masked from 'package:graphics':
-## 
-##     layout
-```
-
-```r
 library(gganimate)     # for adding animation layers to ggplots
-```
-
-```
-## Warning: package 'gganimate' was built under R version 4.1.3
-```
-
-```r
 library(transformr)    # for "tweening" (gganimate)
-```
-
-```
-## Warning: package 'transformr' was built under R version 4.1.3
-```
-
-```
-## 
-## Attaching package: 'transformr'
-```
-
-```
-## The following object is masked from 'package:sf':
-## 
-##     st_normalize
-```
-
-```r
 library(gifski)        # need the library for creating gifs but don't need to load each time
-```
-
-```
-## Warning: package 'gifski' was built under R version 4.1.3
-```
-
-```r
 library(shiny)         # for creating interactive apps
-```
-
-```
-## Warning: package 'shiny' was built under R version 4.1.2
-```
-
-```r
 theme_set(theme_minimal())
 ```
 
@@ -263,144 +39,23 @@ theme_set(theme_minimal())
 ```r
 # SNCF Train data
 small_trains <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-26/small_trains.csv") 
-```
 
-```
-## Rows: 32772 Columns: 13
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (4): service, departure_station, arrival_station, delay_cause
-## dbl (9): year, month, journey_time_avg, total_num_trips, avg_delay_all_depar...
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 # Lisa's garden data
 data("garden_harvest")
 
 # Lisa's Mallorca cycling data
 mallorca_bike_day7 <- read_csv("https://www.dropbox.com/s/zc6jan4ltmjtvy0/mallorca_bike_day7.csv?dl=1") %>% 
   select(1:4, speed)
-```
 
-```
-## Rows: 3210 Columns: 11
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## dbl  (8): lon, lat, ele, extensions, ele.num, time_hr, dist_km, speed
-## dttm (2): time, hrminsec
-## date (1): date
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 # Heather Lendway's Ironman 70.3 Pan Am championships Panama data
 panama_swim <- read_csv("https://raw.githubusercontent.com/llendway/gps-data/master/data/panama_swim_20160131.csv")
-```
 
-```
-## Rows: 36 Columns: 8
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (1): event
-## dbl  (3): lon, lat, extensions
-## lgl  (1): ele
-## dttm (2): time, hrminsec
-## date (1): date
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 panama_bike <- read_csv("https://raw.githubusercontent.com/llendway/gps-data/master/data/panama_bike_20160131.csv")
-```
 
-```
-## Rows: 7924 Columns: 8
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (1): event
-## dbl  (4): lon, lat, ele, extensions
-## dttm (2): time, hrminsec
-## date (1): date
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 panama_run <- read_csv("https://raw.githubusercontent.com/llendway/gps-data/master/data/panama_run_20160131.csv")
-```
 
-```
-## Rows: 1111 Columns: 8
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (1): event
-## dbl  (4): lon, lat, ele, extensions
-## dttm (2): time, hrminsec
-## date (1): date
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 #COVID-19 data from the New York Times
 covid19 <- read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
-```
-
-```
-## Rows: 41894 Columns: 5
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr  (2): state, fips
-## dbl  (2): cases, deaths
-## date (1): date
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ## Put your homework on GitHub!
@@ -428,8 +83,64 @@ Once your repository is created, you should always open your **project** rather 
   1. Choose 2 graphs you have created for ANY assignment in this class and add interactivity using the `ggplotly()` function.
   
 
+```r
+veggie_graph<- garden_harvest %>% 
+  filter(vegetable=="beets") %>%
+  group_by(variety,date) %>% 
+  summarize(total_wt = sum(weight)) %>% 
+  mutate(wt_lbs = total_wt*0.0022046, cum_wt_lbs = cumsum(wt_lbs)) %>% 
+  ggplot(aes(x=date, y = cum_wt_lbs, color = variety))+
+  geom_line()+
+  labs(x="Date",y="Cumulative Weight in lbs", title = "Total Cumulative Weight over Time")
+  
+
+ggplotly(veggie_graph)
+```
+
+```{=html}
+<div id="htmlwidget-823cf0bafae2cefb6c83" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-823cf0bafae2cefb6c83">{"x":{"data":[{"x":[18450,18451,18463,18470,18487],"y":[0.1366852,0.319667,0.5555592,0.8840446,7.021651],"text":["date: 2020-07-07<br />cum_wt_lbs: 0.1366852<br />variety: Gourmet Golden","date: 2020-07-08<br />cum_wt_lbs: 0.3196670<br />variety: Gourmet Golden","date: 2020-07-20<br />cum_wt_lbs: 0.5555592<br />variety: Gourmet Golden","date: 2020-07-27<br />cum_wt_lbs: 0.8840446<br />variety: Gourmet Golden","date: 2020-08-13<br />cum_wt_lbs: 7.0216510<br />variety: Gourmet Golden"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)","dash":"solid"},"hoveron":"points","name":"Gourmet Golden","legendgroup":"Gourmet Golden","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18424,18431,18432,18434],"y":[0.0176368,0.0727518,0.0970024,0.2226646],"text":["date: 2020-06-11<br />cum_wt_lbs: 0.0176368<br />variety: leaves","date: 2020-06-18<br />cum_wt_lbs: 0.0727518<br />variety: leaves","date: 2020-06-19<br />cum_wt_lbs: 0.0970024<br />variety: leaves","date: 2020-06-21<br />cum_wt_lbs: 0.2226646<br />variety: leaves"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,186,56,1)","dash":"solid"},"hoveron":"points","name":"leaves","legendgroup":"leaves","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[18450,18452,18455,18461,18470,18473,18487],"y":[0.022046,0.1741634,0.3703728,0.749564,0.8575894,1.080254,6.3867262],"text":["date: 2020-07-07<br />cum_wt_lbs: 0.0220460<br />variety: Sweet Merlin","date: 2020-07-09<br />cum_wt_lbs: 0.1741634<br />variety: Sweet Merlin","date: 2020-07-12<br />cum_wt_lbs: 0.3703728<br />variety: Sweet Merlin","date: 2020-07-18<br />cum_wt_lbs: 0.7495640<br />variety: Sweet Merlin","date: 2020-07-27<br />cum_wt_lbs: 0.8575894<br />variety: Sweet Merlin","date: 2020-07-30<br />cum_wt_lbs: 1.0802540<br />variety: Sweet Merlin","date: 2020-08-13<br />cum_wt_lbs: 6.3867262<br />variety: Sweet Merlin"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(97,156,255,1)","dash":"solid"},"hoveron":"points","name":"Sweet Merlin","legendgroup":"Sweet Merlin","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":31.4155251141553},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Total Cumulative Weight over Time","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[18420.85,18490.15],"tickmode":"array","ticktext":["Jun 15","Jul 01","Jul 15","Aug 01","Aug 15"],"tickvals":[18428,18444,18458,18475,18489],"categoryorder":"array","categoryarray":["Jun 15","Jul 01","Jul 15","Aug 01","Aug 15"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Date","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.33256391,7.37185171],"tickmode":"array","ticktext":["0","2","4","6"],"tickvals":[0,2,4,6],"categoryorder":"array","categoryarray":["0","2","4","6"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Cumulative Weight in lbs","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"variety","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"32c42de86066":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"32c42de86066","visdat":{"32c42de86066":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+```
+  
+
+```r
+lettuce_graph <- garden_harvest %>%
+  filter(vegetable=="lettuce") %>%
+  group_by(variety, date) %>%
+  ggplot(aes(y=variety))+
+  geom_bar()+
+  labs(x="Times Harvested",y="Variety", title = "Variety of Lettuce Harvested")
+
+ggplotly(lettuce_graph)
+```
+
+```{=html}
+<div id="htmlwidget-ee14cf56c68725fcf292" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ee14cf56c68725fcf292">{"x":{"data":[{"orientation":"v","width":[27,29,1,3,9],"base":[0.55,1.55,2.55,3.55,4.55],"x":[13.5,14.5,0.5,1.5,4.5],"y":[0.9,0.9,0.9,0.9,0.9],"text":["count: 27<br />variety: 0.9","count: 29<br />variety: 0.9","count:  1<br />variety: 0.9","count:  3<br />variety: 0.9","count:  9<br />variety: 0.9"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":148.310502283105},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Variety of Lettuce Harvested","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.45,30.45],"tickmode":"array","ticktext":["0","10","20","30"],"tickvals":[0,10,20,30],"categoryorder":"array","categoryarray":["0","10","20","30"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Times Harvested","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,5.6],"tickmode":"array","ticktext":["Farmer's Market Blend","Lettuce Mixture","mustard greens","reseed","Tatsoi"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["Farmer's Market Blend","Lettuce Mixture","mustard greens","reseed","Tatsoi"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Variety","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"32c45820341f":{"y":{},"type":"bar"}},"cur_data":"32c45820341f","visdat":{"32c45820341f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+```
   
   2. Use animation to tell an interesting story with the `small_trains` dataset that contains data from the SNCF (National Society of French Railways). These are Tidy Tuesday data! Read more about it [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26).
+
+
+```r
+small_trains %>% 
+  filter(year == "2018") %>% 
+  group_by(departure_station,month) %>%
+  summarise(total_trips = sum(total_num_trips)) %>% 
+  ungroup() %>% 
+  complete(departure_station,month) %>% 
+  group_by(departure_station) %>% 
+  mutate(cum = cumsum(total_trips)) %>% 
+  top_n(n = 10, wt = cum) %>% 
+  arrange(month, cum) %>% 
+  mutate(rank = 1:n()) %>% 
+  ggplot(aes(x=cum,y = departure_station))+
+  geom_col()+
+  labs(x="Number of Trips",y="Station", title = "Cumulative Number of Trips Throughout 2018")+
+  transition_time(month)
+```
+
+<img src="05_exercises_new_files/figure-html/unnamed-chunk-3-1.gif" title="bar graph of the cumulative number of trips of each departure station separated by months" alt="bar graph of the cumulative number of trips of each departure station separated by months"  />
 
 
 ## Garden data
@@ -442,25 +153,52 @@ Once your repository is created, you should always open your **project** rather 
 
 
 ```r
-garden_harvest %>% 
+garden_subset <- garden_harvest %>% 
   filter(vegetable == "tomatoes") %>% 
   group_by(date, variety) %>% 
   summarize(daily_harvest_lb = sum(weight)*0.00220462) %>% 
   ungroup() %>% 
   complete(variety, 
            date, 
-           fill = list(daily_harvest_lb = 0))
+           fill = list(daily_harvest_lb = 0)) %>% 
+  group_by(variety) %>% 
+  mutate(cum_harvest_lb = sum(daily_harvest_lb))
+
+
+garden_subset%>% 
+  ggplot(aes(x = date,y = daily_harvest_lb, fill = fct_reorder(variety,cum_harvest_lb)))+
+  geom_area()+
+  scale_fill_viridis_d(option = "mako", labels = c("grape" ="Grape", "volunteers" = "Volunteers"))+
+  labs(x= "Date", y ="Daily Harvest", fill ="Variety", title ="Tomato Harvest by Date")
+```
+
+<img src="05_exercises_new_files/figure-html/unnamed-chunk-4-1.png" title="area graph of the cumulative harvest of each variety of tomato" alt="area graph of the cumulative harvest of each variety of tomato"  />
+
+```r
+garden_subset%>% 
+  ggplot(aes(x = date,y = daily_harvest_lb, fill =fct_reorder(variety,cum_harvest_lb)))+
+  geom_area()+
+  scale_fill_viridis_d(option = "mako", labels = c("grape" ="Grape", "volunteers" = "Volunteers"))+
+  labs(x= "Date", y ="Daily Harvest", fill ="Variety", title ="Tomato Harvest by Date")+
+  transition_reveal(date)+
+  geom_text(aes(label =variety))
+```
+
+<img src="05_exercises_new_files/figure-html/unnamed-chunk-4-1.gif" title="area graph of the cumulative harvest of each variety of tomato" alt="area graph of the cumulative harvest of each variety of tomato"  />
+
+```r
+  theme(legend.position = "none", legend.title = element_blank())
 ```
 
 ```
-## `summarise()` has grouped output by 'date'. You can override using the `.groups` argument.
+## List of 2
+##  $ legend.title   : list()
+##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+##  $ legend.position: chr "none"
+##  - attr(*, "class")= chr [1:2] "theme" "gg"
+##  - attr(*, "complete")= logi FALSE
+##  - attr(*, "validate")= logi TRUE
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["variety"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["daily_harvest_lb"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Amish Paste","2":"2020-07-11","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-21","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-24","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-25","3":"1.02073906"},{"1":"Amish Paste","2":"2020-07-26","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-27","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-28","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-29","3":"0.46076558"},{"1":"Amish Paste","2":"2020-07-30","3":"0.00000000"},{"1":"Amish Paste","2":"2020-07-31","3":"0.43431014"},{"1":"Amish Paste","2":"2020-08-01","3":"0.21384814"},{"1":"Amish Paste","2":"2020-08-02","3":"1.12215158"},{"1":"Amish Paste","2":"2020-08-03","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-04","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-05","3":"0.84216484"},{"1":"Amish Paste","2":"2020-08-06","3":"0.38580850"},{"1":"Amish Paste","2":"2020-08-07","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-08","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-09","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-10","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-11","3":"1.11553772"},{"1":"Amish Paste","2":"2020-08-13","3":"1.41536604"},{"1":"Amish Paste","2":"2020-08-14","3":"1.15742550"},{"1":"Amish Paste","2":"2020-08-16","3":"1.23458720"},{"1":"Amish Paste","2":"2020-08-17","3":"1.29631656"},{"1":"Amish Paste","2":"2020-08-18","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-19","3":"2.19800614"},{"1":"Amish Paste","2":"2020-08-20","3":"2.22666620"},{"1":"Amish Paste","2":"2020-08-21","3":"0.94357736"},{"1":"Amish Paste","2":"2020-08-23","3":"3.39952404"},{"1":"Amish Paste","2":"2020-08-24","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-25","3":"3.08646800"},{"1":"Amish Paste","2":"2020-08-26","3":"4.15791332"},{"1":"Amish Paste","2":"2020-08-29","3":"0.00000000"},{"1":"Amish Paste","2":"2020-08-30","3":"6.46835508"},{"1":"Amish Paste","2":"2020-09-01","3":"3.38850094"},{"1":"Amish Paste","2":"2020-09-03","3":"0.00000000"},{"1":"Amish Paste","2":"2020-09-04","3":"4.76197920"},{"1":"Amish Paste","2":"2020-09-06","3":"2.90348454"},{"1":"Amish Paste","2":"2020-09-10","3":"1.52559704"},{"1":"Amish Paste","2":"2020-09-15","3":"0.00000000"},{"1":"Amish Paste","2":"2020-09-17","3":"0.00000000"},{"1":"Amish Paste","2":"2020-09-18","3":"0.50265336"},{"1":"Amish Paste","2":"2020-09-19","3":"0.00000000"},{"1":"Amish Paste","2":"2020-09-21","3":"0.00000000"},{"1":"Amish Paste","2":"2020-09-25","3":"6.03624956"},{"1":"Amish Paste","2":"2020-09-30","3":"3.19008514"},{"1":"Amish Paste","2":"2020-10-03","3":"0.55556424"},{"1":"Amish Paste","2":"2020-10-07","3":"1.57630330"},{"1":"Amish Paste","2":"2020-10-10","3":"0.00000000"},{"1":"Amish Paste","2":"2020-10-11","3":"5.46304836"},{"1":"Amish Paste","2":"2020-10-14","3":"2.59042850"},{"1":"Better Boy","2":"2020-07-11","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-21","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-24","3":"0.48501640"},{"1":"Better Boy","2":"2020-07-25","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-26","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-27","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-28","3":"0.68784144"},{"1":"Better Boy","2":"2020-07-29","3":"0.97444204"},{"1":"Better Boy","2":"2020-07-30","3":"0.00000000"},{"1":"Better Boy","2":"2020-07-31","3":"0.63933980"},{"1":"Better Boy","2":"2020-08-01","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-02","3":"0.46517482"},{"1":"Better Boy","2":"2020-08-03","3":"0.67902296"},{"1":"Better Boy","2":"2020-08-04","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-05","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-06","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-07","3":"2.30382790"},{"1":"Better Boy","2":"2020-08-08","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-09","3":"2.42949124"},{"1":"Better Boy","2":"2020-08-10","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-11","3":"0.78043548"},{"1":"Better Boy","2":"2020-08-13","3":"1.60275874"},{"1":"Better Boy","2":"2020-08-14","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-16","3":"0.52469956"},{"1":"Better Boy","2":"2020-08-17","3":"1.68432968"},{"1":"Better Boy","2":"2020-08-18","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-19","3":"1.35584130"},{"1":"Better Boy","2":"2020-08-20","3":"0.50706260"},{"1":"Better Boy","2":"2020-08-21","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-23","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-24","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-25","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-26","3":"0.68122758"},{"1":"Better Boy","2":"2020-08-29","3":"0.00000000"},{"1":"Better Boy","2":"2020-08-30","3":"0.86641566"},{"1":"Better Boy","2":"2020-09-01","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-03","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-04","3":"6.39119338"},{"1":"Better Boy","2":"2020-09-06","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-10","3":"3.06883104"},{"1":"Better Boy","2":"2020-09-15","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-17","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-18","3":"1.47709540"},{"1":"Better Boy","2":"2020-09-19","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-21","3":"0.00000000"},{"1":"Better Boy","2":"2020-09-25","3":"2.73152418"},{"1":"Better Boy","2":"2020-09-30","3":"1.08908228"},{"1":"Better Boy","2":"2020-10-03","3":"0.00000000"},{"1":"Better Boy","2":"2020-10-07","3":"0.00000000"},{"1":"Better Boy","2":"2020-10-10","3":"0.00000000"},{"1":"Better Boy","2":"2020-10-11","3":"1.15963012"},{"1":"Better Boy","2":"2020-10-14","3":"1.42418452"},{"1":"Big Beef","2":"2020-07-11","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-21","3":"0.30203294"},{"1":"Big Beef","2":"2020-07-24","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-25","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-26","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-27","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-28","3":"0.44753786"},{"1":"Big Beef","2":"2020-07-29","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-30","3":"0.00000000"},{"1":"Big Beef","2":"2020-07-31","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-01","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-02","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-03","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-04","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-05","3":"0.49163026"},{"1":"Big Beef","2":"2020-08-06","3":"0.67681834"},{"1":"Big Beef","2":"2020-08-07","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-08","3":"0.35714844"},{"1":"Big Beef","2":"2020-08-09","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-10","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-11","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-13","3":"0.91050806"},{"1":"Big Beef","2":"2020-08-14","3":"0.58642892"},{"1":"Big Beef","2":"2020-08-16","3":"0.87523414"},{"1":"Big Beef","2":"2020-08-17","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-18","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-19","3":"0.58201968"},{"1":"Big Beef","2":"2020-08-20","3":"0.75838928"},{"1":"Big Beef","2":"2020-08-21","3":"1.85629004"},{"1":"Big Beef","2":"2020-08-23","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-24","3":"0.00000000"},{"1":"Big Beef","2":"2020-08-25","3":"2.18918766"},{"1":"Big Beef","2":"2020-08-26","3":"1.09569614"},{"1":"Big Beef","2":"2020-08-29","3":"2.27737246"},{"1":"Big Beef","2":"2020-08-30","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-01","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-03","3":"2.78884430"},{"1":"Big Beef","2":"2020-09-04","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-06","3":"3.63541838"},{"1":"Big Beef","2":"2020-09-10","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-15","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-17","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-18","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-19","3":"0.67020448"},{"1":"Big Beef","2":"2020-09-21","3":"0.00000000"},{"1":"Big Beef","2":"2020-09-25","3":"1.45284458"},{"1":"Big Beef","2":"2020-09-30","3":"0.00000000"},{"1":"Big Beef","2":"2020-10-03","3":"0.00000000"},{"1":"Big Beef","2":"2020-10-07","3":"0.59965664"},{"1":"Big Beef","2":"2020-10-10","3":"0.00000000"},{"1":"Big Beef","2":"2020-10-11","3":"0.69665992"},{"1":"Big Beef","2":"2020-10-14","3":"1.74385442"},{"1":"Black Krim","2":"2020-07-11","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-21","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-24","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-25","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-26","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-27","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-28","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-29","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-30","3":"0.00000000"},{"1":"Black Krim","2":"2020-07-31","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-01","3":"0.96121432"},{"1":"Black Krim","2":"2020-08-02","3":"1.88935934"},{"1":"Black Krim","2":"2020-08-03","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-04","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-05","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-06","3":"0.86641566"},{"1":"Black Krim","2":"2020-08-07","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-08","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-09","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-10","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-11","3":"0.79145858"},{"1":"Black Krim","2":"2020-08-13","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-14","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-16","3":"0.64154442"},{"1":"Black Krim","2":"2020-08-17","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-18","3":"0.69886454"},{"1":"Black Krim","2":"2020-08-19","3":"1.27647498"},{"1":"Black Krim","2":"2020-08-20","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-21","3":"3.39070556"},{"1":"Black Krim","2":"2020-08-23","3":"3.46786726"},{"1":"Black Krim","2":"2020-08-24","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-25","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-26","3":"0.47619792"},{"1":"Black Krim","2":"2020-08-29","3":"0.00000000"},{"1":"Black Krim","2":"2020-08-30","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-01","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-03","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-04","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-06","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-10","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-15","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-17","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-18","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-19","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-21","3":"0.00000000"},{"1":"Black Krim","2":"2020-09-25","3":"0.52029032"},{"1":"Black Krim","2":"2020-09-30","3":"0.00000000"},{"1":"Black Krim","2":"2020-10-03","3":"0.00000000"},{"1":"Black Krim","2":"2020-10-07","3":"0.00000000"},{"1":"Black Krim","2":"2020-10-10","3":"0.00000000"},{"1":"Black Krim","2":"2020-10-11","3":"0.82673250"},{"1":"Black Krim","2":"2020-10-14","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-11","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-21","3":"0.74736618"},{"1":"Bonny Best","2":"2020-07-24","3":"0.30864680"},{"1":"Bonny Best","2":"2020-07-25","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-26","3":"0.32628376"},{"1":"Bonny Best","2":"2020-07-27","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-28","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-29","3":"0.33730686"},{"1":"Bonny Best","2":"2020-07-30","3":"0.00000000"},{"1":"Bonny Best","2":"2020-07-31","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-01","3":"0.95900970"},{"1":"Bonny Best","2":"2020-08-02","3":"0.34392072"},{"1":"Bonny Best","2":"2020-08-03","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-04","3":"0.85318794"},{"1":"Bonny Best","2":"2020-08-05","3":"1.24120106"},{"1":"Bonny Best","2":"2020-08-06","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-07","3":"0.79145858"},{"1":"Bonny Best","2":"2020-08-08","3":"1.24340568"},{"1":"Bonny Best","2":"2020-08-09","3":"0.39462698"},{"1":"Bonny Best","2":"2020-08-10","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-11","3":"0.67681834"},{"1":"Bonny Best","2":"2020-08-13","3":"0.73193384"},{"1":"Bonny Best","2":"2020-08-14","3":"1.56748482"},{"1":"Bonny Best","2":"2020-08-16","3":"1.19710866"},{"1":"Bonny Best","2":"2020-08-17","3":"0.80248168"},{"1":"Bonny Best","2":"2020-08-18","3":"0.59745202"},{"1":"Bonny Best","2":"2020-08-19","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-20","3":"1.39331984"},{"1":"Bonny Best","2":"2020-08-21","3":"0.72752460"},{"1":"Bonny Best","2":"2020-08-23","3":"0.59304278"},{"1":"Bonny Best","2":"2020-08-24","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-25","3":"1.38670598"},{"1":"Bonny Best","2":"2020-08-26","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-29","3":"0.00000000"},{"1":"Bonny Best","2":"2020-08-30","3":"0.34171610"},{"1":"Bonny Best","2":"2020-09-01","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-03","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-04","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-06","3":"1.56528020"},{"1":"Bonny Best","2":"2020-09-10","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-15","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-17","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-18","3":"2.31926024"},{"1":"Bonny Best","2":"2020-09-19","3":"0.00000000"},{"1":"Bonny Best","2":"2020-09-21","3":"1.57409868"},{"1":"Bonny Best","2":"2020-09-25","3":"1.05160374"},{"1":"Bonny Best","2":"2020-09-30","3":"0.00000000"},{"1":"Bonny Best","2":"2020-10-03","3":"0.00000000"},{"1":"Bonny Best","2":"2020-10-07","3":"0.00000000"},{"1":"Bonny Best","2":"2020-10-10","3":"0.00000000"},{"1":"Bonny Best","2":"2020-10-11","3":"0.85098332"},{"1":"Bonny Best","2":"2020-10-14","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-11","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-21","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-24","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-25","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-26","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-27","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-28","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-29","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-30","3":"0.00000000"},{"1":"Brandywine","2":"2020-07-31","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-01","3":"0.70547840"},{"1":"Brandywine","2":"2020-08-02","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-03","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-04","3":"0.50926722"},{"1":"Brandywine","2":"2020-08-05","3":"0.63933980"},{"1":"Brandywine","2":"2020-08-06","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-07","3":"0.78484472"},{"1":"Brandywine","2":"2020-08-08","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-09","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-10","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-11","3":"0.48060716"},{"1":"Brandywine","2":"2020-08-13","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-14","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-16","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-17","3":"0.67240910"},{"1":"Brandywine","2":"2020-08-18","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-19","3":"0.73854770"},{"1":"Brandywine","2":"2020-08-20","3":"1.06483146"},{"1":"Brandywine","2":"2020-08-21","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-23","3":"0.98326052"},{"1":"Brandywine","2":"2020-08-24","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-25","3":"1.92022402"},{"1":"Brandywine","2":"2020-08-26","3":"2.29721404"},{"1":"Brandywine","2":"2020-08-29","3":"0.00000000"},{"1":"Brandywine","2":"2020-08-30","3":"1.01412520"},{"1":"Brandywine","2":"2020-09-01","3":"0.39242236"},{"1":"Brandywine","2":"2020-09-03","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-04","3":"0.94798660"},{"1":"Brandywine","2":"2020-09-06","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-10","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-15","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-17","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-18","3":"1.57409868"},{"1":"Brandywine","2":"2020-09-19","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-21","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-25","3":"0.00000000"},{"1":"Brandywine","2":"2020-09-30","3":"0.00000000"},{"1":"Brandywine","2":"2020-10-03","3":"0.00000000"},{"1":"Brandywine","2":"2020-10-07","3":"0.00000000"},{"1":"Brandywine","2":"2020-10-10","3":"0.00000000"},{"1":"Brandywine","2":"2020-10-11","3":"0.00000000"},{"1":"Brandywine","2":"2020-10-14","3":"0.92153116"},{"1":"Cherokee Purple","2":"2020-07-11","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-21","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-24","3":"0.54454114"},{"1":"Cherokee Purple","2":"2020-07-25","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-26","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-27","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-28","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-29","3":"0.52910880"},{"1":"Cherokee Purple","2":"2020-07-30","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-07-31","3":"0.67681834"},{"1":"Cherokee Purple","2":"2020-08-01","3":"1.36465978"},{"1":"Cherokee Purple","2":"2020-08-02","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-03","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-04","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-05","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-06","3":"0.66799986"},{"1":"Cherokee Purple","2":"2020-08-07","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-08","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-09","3":"0.67902296"},{"1":"Cherokee Purple","2":"2020-08-10","3":"0.47619792"},{"1":"Cherokee Purple","2":"2020-08-11","3":"1.76810524"},{"1":"Cherokee Purple","2":"2020-08-13","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-14","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-16","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-17","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-18","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-19","3":"1.92242864"},{"1":"Cherokee Purple","2":"2020-08-20","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-21","3":"3.52959662"},{"1":"Cherokee Purple","2":"2020-08-23","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-24","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-25","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-26","3":"1.30733966"},{"1":"Cherokee Purple","2":"2020-08-29","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-08-30","3":"1.32056738"},{"1":"Cherokee Purple","2":"2020-09-01","3":"0.44312862"},{"1":"Cherokee Purple","2":"2020-09-03","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-04","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-06","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-10","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-15","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-17","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-18","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-19","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-21","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-25","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-09-30","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-10-03","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-10-07","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-10-10","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-10-11","3":"0.00000000"},{"1":"Cherokee Purple","2":"2020-10-14","3":"0.48281178"},{"1":"grape","2":"2020-07-11","3":"0.05291088"},{"1":"grape","2":"2020-07-21","3":"0.18959732"},{"1":"grape","2":"2020-07-24","3":"0.06834322"},{"1":"grape","2":"2020-07-25","3":"0.23368972"},{"1":"grape","2":"2020-07-26","3":"0.00000000"},{"1":"grape","2":"2020-07-27","3":"0.00000000"},{"1":"grape","2":"2020-07-28","3":"0.28880522"},{"1":"grape","2":"2020-07-29","3":"0.08818480"},{"1":"grape","2":"2020-07-30","3":"0.20062042"},{"1":"grape","2":"2020-07-31","3":"0.22046200"},{"1":"grape","2":"2020-08-01","3":"0.37037616"},{"1":"grape","2":"2020-08-02","3":"0.22487124"},{"1":"grape","2":"2020-08-03","3":"0.00000000"},{"1":"grape","2":"2020-08-04","3":"0.26014516"},{"1":"grape","2":"2020-08-05","3":"0.47840254"},{"1":"grape","2":"2020-08-06","3":"0.00000000"},{"1":"grape","2":"2020-08-07","3":"0.64374904"},{"1":"grape","2":"2020-08-08","3":"0.17857422"},{"1":"grape","2":"2020-08-09","3":"0.14109568"},{"1":"grape","2":"2020-08-10","3":"0.00000000"},{"1":"grape","2":"2020-08-11","3":"0.66579524"},{"1":"grape","2":"2020-08-13","3":"0.92814502"},{"1":"grape","2":"2020-08-14","3":"0.27778212"},{"1":"grape","2":"2020-08-16","3":"1.05160374"},{"1":"grape","2":"2020-08-17","3":"0.96121432"},{"1":"grape","2":"2020-08-18","3":"0.29982832"},{"1":"grape","2":"2020-08-19","3":"0.99428362"},{"1":"grape","2":"2020-08-20","3":"1.08687766"},{"1":"grape","2":"2020-08-21","3":"0.58422430"},{"1":"grape","2":"2020-08-23","3":"0.96121432"},{"1":"grape","2":"2020-08-24","3":"0.16534650"},{"1":"grape","2":"2020-08-25","3":"1.11553772"},{"1":"grape","2":"2020-08-26","3":"1.80558378"},{"1":"grape","2":"2020-08-29","3":"0.83775560"},{"1":"grape","2":"2020-08-30","3":"1.83644846"},{"1":"grape","2":"2020-09-01","3":"0.00000000"},{"1":"grape","2":"2020-09-03","3":"2.49342522"},{"1":"grape","2":"2020-09-04","3":"0.97444204"},{"1":"grape","2":"2020-09-06","3":"1.35584130"},{"1":"grape","2":"2020-09-10","3":"1.12215158"},{"1":"grape","2":"2020-09-15","3":"0.56879196"},{"1":"grape","2":"2020-09-17","3":"0.00000000"},{"1":"grape","2":"2020-09-18","3":"0.00000000"},{"1":"grape","2":"2020-09-19","3":"2.33248796"},{"1":"grape","2":"2020-09-21","3":"0.00000000"},{"1":"grape","2":"2020-09-25","3":"1.80558378"},{"1":"grape","2":"2020-09-30","3":"1.49473236"},{"1":"grape","2":"2020-10-03","3":"0.00000000"},{"1":"grape","2":"2020-10-07","3":"0.00000000"},{"1":"grape","2":"2020-10-10","3":"3.03576174"},{"1":"grape","2":"2020-10-11","3":"0.00000000"},{"1":"grape","2":"2020-10-14","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-11","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-21","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-24","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-25","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-26","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-27","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-28","3":"0.69445530"},{"1":"Jet Star","2":"2020-07-29","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-30","3":"0.00000000"},{"1":"Jet Star","2":"2020-07-31","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-01","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-02","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-03","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-04","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-05","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-06","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-07","3":"1.23899644"},{"1":"Jet Star","2":"2020-08-08","3":"0.40565008"},{"1":"Jet Star","2":"2020-08-09","3":"1.30293042"},{"1":"Jet Star","2":"2020-08-10","3":"0.53131342"},{"1":"Jet Star","2":"2020-08-11","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-13","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-14","3":"0.39903622"},{"1":"Jet Star","2":"2020-08-16","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-17","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-18","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-19","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-20","3":"0.79366320"},{"1":"Jet Star","2":"2020-08-21","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-23","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-24","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-25","3":"1.27427036"},{"1":"Jet Star","2":"2020-08-26","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-29","3":"0.00000000"},{"1":"Jet Star","2":"2020-08-30","3":"1.65787424"},{"1":"Jet Star","2":"2020-09-01","3":"1.70417126"},{"1":"Jet Star","2":"2020-09-03","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-04","3":"2.59704236"},{"1":"Jet Star","2":"2020-09-06","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-10","3":"1.66228348"},{"1":"Jet Star","2":"2020-09-15","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-17","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-18","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-19","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-21","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-25","3":"0.00000000"},{"1":"Jet Star","2":"2020-09-30","3":"0.00000000"},{"1":"Jet Star","2":"2020-10-03","3":"0.76279852"},{"1":"Jet Star","2":"2020-10-07","3":"0.00000000"},{"1":"Jet Star","2":"2020-10-10","3":"0.00000000"},{"1":"Jet Star","2":"2020-10-11","3":"0.00000000"},{"1":"Jet Star","2":"2020-10-14","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-11","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-21","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-24","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-25","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-26","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-27","3":"1.76590062"},{"1":"Mortgage Lifter","2":"2020-07-28","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-29","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-30","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-07-31","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-01","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-02","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-03","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-04","3":"0.74736618"},{"1":"Mortgage Lifter","2":"2020-08-05","3":"1.72180822"},{"1":"Mortgage Lifter","2":"2020-08-06","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-07","3":"0.80248168"},{"1":"Mortgage Lifter","2":"2020-08-08","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-09","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-10","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-11","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-13","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-14","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-16","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-17","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-18","3":"1.34040896"},{"1":"Mortgage Lifter","2":"2020-08-19","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-20","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-21","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-23","3":"1.55205248"},{"1":"Mortgage Lifter","2":"2020-08-24","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-25","3":"2.26194012"},{"1":"Mortgage Lifter","2":"2020-08-26","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-08-29","3":"2.41846814"},{"1":"Mortgage Lifter","2":"2020-08-30","3":"1.29852118"},{"1":"Mortgage Lifter","2":"2020-09-01","3":"2.64995324"},{"1":"Mortgage Lifter","2":"2020-09-03","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-04","3":"0.56217810"},{"1":"Mortgage Lifter","2":"2020-09-06","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-10","3":"0.69665992"},{"1":"Mortgage Lifter","2":"2020-09-15","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-17","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-18","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-19","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-21","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-09-25","3":"4.42246772"},{"1":"Mortgage Lifter","2":"2020-09-30","3":"0.72091074"},{"1":"Mortgage Lifter","2":"2020-10-03","3":"0.46958406"},{"1":"Mortgage Lifter","2":"2020-10-07","3":"0.55997348"},{"1":"Mortgage Lifter","2":"2020-10-10","3":"0.00000000"},{"1":"Mortgage Lifter","2":"2020-10-11","3":"0.44092400"},{"1":"Mortgage Lifter","2":"2020-10-14","3":"1.89376858"},{"1":"Old German","2":"2020-07-11","3":"0.00000000"},{"1":"Old German","2":"2020-07-21","3":"0.00000000"},{"1":"Old German","2":"2020-07-24","3":"0.00000000"},{"1":"Old German","2":"2020-07-25","3":"0.00000000"},{"1":"Old German","2":"2020-07-26","3":"0.00000000"},{"1":"Old German","2":"2020-07-27","3":"0.00000000"},{"1":"Old German","2":"2020-07-28","3":"1.34702282"},{"1":"Old German","2":"2020-07-29","3":"0.00000000"},{"1":"Old German","2":"2020-07-30","3":"0.00000000"},{"1":"Old German","2":"2020-07-31","3":"1.39552446"},{"1":"Old German","2":"2020-08-01","3":"0.00000000"},{"1":"Old German","2":"2020-08-02","3":"0.74075232"},{"1":"Old German","2":"2020-08-03","3":"0.00000000"},{"1":"Old German","2":"2020-08-04","3":"0.00000000"},{"1":"Old German","2":"2020-08-05","3":"0.00000000"},{"1":"Old German","2":"2020-08-06","3":"0.00000000"},{"1":"Old German","2":"2020-08-07","3":"0.51367646"},{"1":"Old German","2":"2020-08-08","3":"0.00000000"},{"1":"Old German","2":"2020-08-09","3":"0.00000000"},{"1":"Old German","2":"2020-08-10","3":"0.00000000"},{"1":"Old German","2":"2020-08-11","3":"0.00000000"},{"1":"Old German","2":"2020-08-13","3":"0.00000000"},{"1":"Old German","2":"2020-08-14","3":"0.52469956"},{"1":"Old German","2":"2020-08-16","3":"1.32056738"},{"1":"Old German","2":"2020-08-17","3":"0.00000000"},{"1":"Old German","2":"2020-08-18","3":"0.23148510"},{"1":"Old German","2":"2020-08-19","3":"0.00000000"},{"1":"Old German","2":"2020-08-20","3":"0.00000000"},{"1":"Old German","2":"2020-08-21","3":"0.53572266"},{"1":"Old German","2":"2020-08-23","3":"1.76590062"},{"1":"Old German","2":"2020-08-24","3":"0.00000000"},{"1":"Old German","2":"2020-08-25","3":"0.25353130"},{"1":"Old German","2":"2020-08-26","3":"1.46827692"},{"1":"Old German","2":"2020-08-29","3":"0.00000000"},{"1":"Old German","2":"2020-08-30","3":"1.89817782"},{"1":"Old German","2":"2020-09-01","3":"1.77471910"},{"1":"Old German","2":"2020-09-03","3":"0.00000000"},{"1":"Old German","2":"2020-09-04","3":"0.00000000"},{"1":"Old German","2":"2020-09-06","3":"0.00000000"},{"1":"Old German","2":"2020-09-10","3":"1.48591388"},{"1":"Old German","2":"2020-09-15","3":"0.00000000"},{"1":"Old German","2":"2020-09-17","3":"0.00000000"},{"1":"Old German","2":"2020-09-18","3":"3.59573522"},{"1":"Old German","2":"2020-09-19","3":"0.00000000"},{"1":"Old German","2":"2020-09-21","3":"0.00000000"},{"1":"Old German","2":"2020-09-25","3":"4.01902226"},{"1":"Old German","2":"2020-09-30","3":"0.00000000"},{"1":"Old German","2":"2020-10-03","3":"0.00000000"},{"1":"Old German","2":"2020-10-07","3":"0.80027706"},{"1":"Old German","2":"2020-10-10","3":"0.00000000"},{"1":"Old German","2":"2020-10-11","3":"1.97974876"},{"1":"Old German","2":"2020-10-14","3":"1.06703608"},{"1":"volunteers","2":"2020-07-11","3":"0.00000000"},{"1":"volunteers","2":"2020-07-21","3":"0.00000000"},{"1":"volunteers","2":"2020-07-24","3":"0.00000000"},{"1":"volunteers","2":"2020-07-25","3":"0.00000000"},{"1":"volunteers","2":"2020-07-26","3":"0.00000000"},{"1":"volunteers","2":"2020-07-27","3":"0.00000000"},{"1":"volunteers","2":"2020-07-28","3":"0.00000000"},{"1":"volunteers","2":"2020-07-29","3":"0.00000000"},{"1":"volunteers","2":"2020-07-30","3":"0.00000000"},{"1":"volunteers","2":"2020-07-31","3":"0.00000000"},{"1":"volunteers","2":"2020-08-01","3":"0.00000000"},{"1":"volunteers","2":"2020-08-02","3":"0.00000000"},{"1":"volunteers","2":"2020-08-03","3":"0.00000000"},{"1":"volunteers","2":"2020-08-04","3":"0.16093726"},{"1":"volunteers","2":"2020-08-05","3":"0.14770954"},{"1":"volunteers","2":"2020-08-06","3":"0.00000000"},{"1":"volunteers","2":"2020-08-07","3":"0.00000000"},{"1":"volunteers","2":"2020-08-08","3":"0.00000000"},{"1":"volunteers","2":"2020-08-09","3":"0.11904948"},{"1":"volunteers","2":"2020-08-10","3":"0.00000000"},{"1":"volunteers","2":"2020-08-11","3":"0.35273920"},{"1":"volunteers","2":"2020-08-13","3":"0.00000000"},{"1":"volunteers","2":"2020-08-14","3":"1.08026380"},{"1":"volunteers","2":"2020-08-16","3":"0.72311536"},{"1":"volunteers","2":"2020-08-17","3":"0.67461372"},{"1":"volunteers","2":"2020-08-18","3":"0.32628376"},{"1":"volunteers","2":"2020-08-19","3":"0.67461372"},{"1":"volunteers","2":"2020-08-20","3":"0.73413846"},{"1":"volunteers","2":"2020-08-21","3":"1.23899644"},{"1":"volunteers","2":"2020-08-23","3":"0.00000000"},{"1":"volunteers","2":"2020-08-24","3":"0.00000000"},{"1":"volunteers","2":"2020-08-25","3":"1.07585456"},{"1":"volunteers","2":"2020-08-26","3":"0.57540582"},{"1":"volunteers","2":"2020-08-29","3":"2.87261986"},{"1":"volunteers","2":"2020-08-30","3":"1.81219764"},{"1":"volunteers","2":"2020-09-01","3":"4.30562286"},{"1":"volunteers","2":"2020-09-03","3":"1.34481820"},{"1":"volunteers","2":"2020-09-04","3":"2.72050108"},{"1":"volunteers","2":"2020-09-06","3":"5.24038174"},{"1":"volunteers","2":"2020-09-10","3":"0.91050806"},{"1":"volunteers","2":"2020-09-15","3":"1.59834950"},{"1":"volunteers","2":"2020-09-17","3":"0.46737944"},{"1":"volunteers","2":"2020-09-18","3":"0.00000000"},{"1":"volunteers","2":"2020-09-19","3":"6.46835508"},{"1":"volunteers","2":"2020-09-21","3":"0.20943890"},{"1":"volunteers","2":"2020-09-25","3":"4.36073836"},{"1":"volunteers","2":"2020-09-30","3":"0.15432340"},{"1":"volunteers","2":"2020-10-03","3":"0.00000000"},{"1":"volunteers","2":"2020-10-07","3":"0.14109568"},{"1":"volunteers","2":"2020-10-10","3":"4.35853374"},{"1":"volunteers","2":"2020-10-11","3":"0.50706260"},{"1":"volunteers","2":"2020-10-14","3":"6.25671156"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 
 ## Maps, animation, and movement!
@@ -475,9 +213,76 @@ garden_harvest %>%
   * CHALLENGE: use the `ggimage` package and `geom_image` to add a bike image instead of a red point. You can use [this](https://raw.githubusercontent.com/llendway/animation_and_interactivity/master/bike.png) image. See [here](https://goodekat.github.io/presentations/2019-isugg-gganimate-spooky/slides.html#35) for an example. 
   * Add something of your own! And comment on if you prefer this to the static map and why or why not.
   
+
+```r
+mallorcamap <- get_stamenmap(
+  bbox = c(left = 2.3716, bottom = 39.5317, right = 2.7287, top = 39.7067), 
+  maptype = "terrain",
+  zoom =10)
+
+mallorca_bike_day7 %>% 
+  mutate(time2 = lubridate::hms(time))%>% 
+
+ggmap(mallorcamap)+
+  geom_point(data = mallorca_bike_day7, 
+             aes(x = lon, y = lat), 
+             color = "blue", 
+             alpha = 1, 
+             size = 1) +
+  geom_line(data = mallorca_bike_day7, 
+            aes(x = lon, y = lat, color = ele))+
+  theme_map()+
+  labs(title = "Lisa's Bike Path, 16 March 2018", 
+       subtitle = "Date and Time: {frame_along}",
+       color = "Elevation",
+       x = "",
+       y = "")+
+  theme(legend.position =  "bottom")+
+  transition_reveal(time)+
+  scale_color_viridis_c(option = "inferno")+ 
+  exit_fade()
+```
+
+```
+## Error: ggmap plots objects of class ggmap, see ?get_map
+```
+
+* I prefer the animation because it told me the exact route
+  
   5. In this exercise, you get to meet Lisa's sister, Heather! She is a proud Mac grad, currently works as a Data Scientist where she uses R everyday, and for a few years (while still holding a full-time job) she was a pro triathlete. You are going to map one of her races. The data from each discipline of the Ironman 70.3 Pan Am championships, Panama is in a separate file - `panama_swim`, `panama_bike`, and `panama_run`. Create a similar map to the one you created with my cycling data. You will need to make some small changes: 1. combine the files putting them in swim, bike, run order (HINT: `bind_rows()`), 2. make the leading dot a different color depending on the event (for an extra challenge, make it a different image using `geom_image()!), 3. CHALLENGE (optional): color by speed, which you will need to compute on your own from the data. You can read Heather's race report [here](https://heatherlendway.com/2016/02/10/ironman-70-3-pan-american-championships-panama-race-report/). She is also in the Macalester Athletics [Hall of Fame](https://athletics.macalester.edu/honors/hall-of-fame/heather-lendway/184) and still has records at the pool. 
   
 
+```r
+panama <-bind_rows(panama_swim, panama_bike, panama_swim)
+
+panamamap <- get_stamenmap(
+  bbox = c(left = -79.6007, bottom = 8.8892, right = -79.4222, top = 90014),
+  maptype = "terrain-lines",
+  zoom =11)
+
+ggmap(panama)+
+  geom_point(panama, 
+             aes(x = lon, y = lat), 
+             color = "blue", 
+             alpha = 1, 
+             size = 4) +
+  geom_line(panama,
+            aes(x = lon, y = lat))+
+  theme_map()+
+  labs(x = "",
+       y ="",
+       color = "",
+       subtitle = "Date and Time: {frame_along}",
+       title = "Ironman Path")+
+  theme(legend.position = "bottom")+
+  transition_reveal(time)+
+  scale_color_viridis_d(option ="inferno")+
+  exit_fade()
+```
+
+```
+## Error: ggmap plots objects of class ggmap, see ?get_map
+```
   
 ## COVID-19 data
 
@@ -489,44 +294,55 @@ garden_harvest %>%
   * Use `group = date` in `aes()`.   
   * Comment on what you see.  
 
-
 ```r
 census_pop_est_2018 <- read_csv("https://www.dropbox.com/s/6txwv3b4ng7pepe/us_census_2018_state_pop_est.csv?dl=1") %>% 
   separate(state, into = c("dot","state"), extra = "merge") %>% 
   select(-dot) %>% 
   mutate(state = str_to_lower(state))
-```
 
-```
-## Rows: 51 Columns: 2
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (1): state
-## dbl (1): est_pop_2018
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 states_map <- map_data("state")
 ```
+
+
+
+```r
+state_map = map_data("state")
+
+state_gif<-covid19 %>% 
+  arrange(desc(date)) %>% 
+  mutate(state = str_to_lower(state)) %>% 
+  mutate(numberrow=1:n()) %>% 
+  left_join(census_pop_est_2018, by = "state") %>%
+  mutate(new_cases = (cases/est_pop_2018)*10000) %>%
+  ggplot() +
+  geom_map(map = state_map,
+           aes(map_id = state,
+               fill = new_cases)) +
+  #This assures the map looks decently nice:
+  expand_limits(x = state_map$long, y = state_map$lat) +
+  theme_map()+
+  scale_fill_viridis_c(option = "inferno", direction = -1)+
+  labs(title="Most Recent Covid Cases in the USA", caption = "Plot created by Daniel Beidelschies", fill ="Cases", subtitle = "Date: {frame_along}")+
+  transition_reveal(date)
+
+animate(state_gif, nframes = 200, duration = 10)
+```
+
+![](05_exercises_new_files/figure-html/map of the US and the number of cases per 100000 people by population-1.gif)<!-- -->
+
+* We see that over time the midwestern states were the first states that garnered more cases compared to states with bigger populations
 
 ## Your first `shiny` app (for next week!)
 
   7. This app will also use the COVID data. Make sure you load that data and all the libraries you need in the `app.R` file you create. You should create a new project for the app, separate from the homework project. Below, you will post a link to the app that you publish on shinyapps.io. You will create an app to compare states' daily number of COVID cases per 100,000 over time. The x-axis will be date. You will have an input box where the user can choose which states to compare (`selectInput()`), a slider where the user can choose the date range, and a submit button to click once the user has chosen all states they're interested in comparing. The graph should display a different line for each state, with labels either on the graph or in a legend. Color can be used if needed. 
   
-Put the link to your app here: 
+Put the link to your app here: https://daniel-beidelschies.shinyapps.io/app_ex_5/?_ga=2.240558979.1208563929.1648754543-1644272562.1648581272
   
 ## GitHub link
 
   8. Below, provide a link to your GitHub repo with this set of Weekly Exercises. 
+  
+https://github.com/Dbeidels/DS-112_exercise5
 
 
 **DID YOU REMEMBER TO UNCOMMENT THE OPTIONS AT THE TOP?**

@@ -12,7 +12,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-#knitr::opts_chunk$set(echo = TRUE, error=TRUE, message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo = TRUE, error=TRUE, message=FALSE, warning=FALSE)
 ```
 
 ```{r libraries}
@@ -83,9 +83,51 @@ Once your repository is created, you should always open your **project** rather 
 
   1. Choose 2 graphs you have created for ANY assignment in this class and add interactivity using the `ggplotly()` function.
   
+```{r, fig.alt="line graph of the cumulative harvest of each variety of beets"}
+veggie_graph<- garden_harvest %>% 
+  filter(vegetable=="beets") %>%
+  group_by(variety,date) %>% 
+  summarize(total_wt = sum(weight)) %>% 
+  mutate(wt_lbs = total_wt*0.0022046, cum_wt_lbs = cumsum(wt_lbs)) %>% 
+  ggplot(aes(x=date, y = cum_wt_lbs, color = variety))+
+  geom_line()+
+  labs(x="Date",y="Cumulative Weight in lbs", title = "Total Cumulative Weight over Time")
+  
 
+ggplotly(veggie_graph)
+```
+  
+```{r,fig.alt="bar graph of the amount of times each variety of lettuce was harvested"}
+lettuce_graph <- garden_harvest %>%
+  filter(vegetable=="lettuce") %>%
+  group_by(variety, date) %>%
+  ggplot(aes(y=variety))+
+  geom_bar()+
+  labs(x="Times Harvested",y="Variety", title = "Variety of Lettuce Harvested")
+
+ggplotly(lettuce_graph)
+```
   
   2. Use animation to tell an interesting story with the `small_trains` dataset that contains data from the SNCF (National Society of French Railways). These are Tidy Tuesday data! Read more about it [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-02-26).
+
+```{r, fig.alt="bar graph of the cumulative number of trips of each departure station separated by months"}
+small_trains %>% 
+  filter(year == "2018") %>% 
+  group_by(departure_station,month) %>%
+  summarise(total_trips = sum(total_num_trips)) %>% 
+  ungroup() %>% 
+  complete(departure_station,month) %>% 
+  group_by(departure_station) %>% 
+  mutate(cum = cumsum(total_trips)) %>% 
+  top_n(n = 10, wt = cum) %>% 
+  arrange(month, cum) %>% 
+  mutate(rank = 1:n()) %>% 
+  ggplot(aes(x=cum,y = departure_station))+
+  geom_col()+
+  labs(x="Number of Trips",y="Station", title = "Cumulative Number of Trips Throughout 2018")+
+  transition_time(month)
+  
+```
 
 
 ## Garden data
@@ -96,15 +138,33 @@ Once your repository is created, you should always open your **project** rather 
   * Use the data you just made to create a static cumulative harvest area plot, with the areas filled with different colors for each variety and arranged (HINT: `fct_reorder()`) from most to least harvested weights (most on the bottom).  
   * Add animation to reveal the plot over date. Instead of having a legend, place the variety names directly on the graph (refer back to the tutorial for how to do this).
 
-```{r}
-garden_harvest %>% 
+```{r, fig.alt="area graph of the cumulative harvest of each variety of tomato"}
+garden_subset <- garden_harvest %>% 
   filter(vegetable == "tomatoes") %>% 
   group_by(date, variety) %>% 
   summarize(daily_harvest_lb = sum(weight)*0.00220462) %>% 
   ungroup() %>% 
   complete(variety, 
            date, 
-           fill = list(daily_harvest_lb = 0))
+           fill = list(daily_harvest_lb = 0)) %>% 
+  group_by(variety) %>% 
+  mutate(cum_harvest_lb = sum(daily_harvest_lb))
+
+
+garden_subset%>% 
+  ggplot(aes(x = date,y = daily_harvest_lb, fill = fct_reorder(variety,cum_harvest_lb)))+
+  geom_area()+
+  scale_fill_viridis_d(option = "mako", labels = c("grape" ="Grape", "volunteers" = "Volunteers"))+
+  labs(x= "Date", y ="Daily Harvest", fill ="Variety", title ="Tomato Harvest by Date")
+
+garden_subset%>% 
+  ggplot(aes(x = date,y = daily_harvest_lb, fill =fct_reorder(variety,cum_harvest_lb)))+
+  geom_area()+
+  scale_fill_viridis_d(option = "mako", labels = c("grape" ="Grape", "volunteers" = "Volunteers"))+
+  labs(x= "Date", y ="Daily Harvest", fill ="Variety", title ="Tomato Harvest by Date")+
+  transition_reveal(date)+
+  geom_text(aes(label =variety))
+  theme(legend.position = "none", legend.title = element_blank())
   
 ```
 
@@ -121,10 +181,65 @@ garden_harvest %>%
   * CHALLENGE: use the `ggimage` package and `geom_image` to add a bike image instead of a red point. You can use [this](https://raw.githubusercontent.com/llendway/animation_and_interactivity/master/bike.png) image. See [here](https://goodekat.github.io/presentations/2019-isugg-gganimate-spooky/slides.html#35) for an example. 
   * Add something of your own! And comment on if you prefer this to the static map and why or why not.
   
+```{r,"map of path that Lisa took for her bike journey"}
+mallorcamap <- get_stamenmap(
+  bbox = c(left = 2.3716, bottom = 39.5317, right = 2.7287, top = 39.7067), 
+  maptype = "terrain",
+  zoom =10)
+
+mallorca_bike_day7 %>% 
+  mutate(time2 = lubridate::hms(time))%>% 
+
+ggmap(mallorcamap)+
+  geom_point(data = mallorca_bike_day7, 
+             aes(x = lon, y = lat), 
+             color = "blue", 
+             alpha = 1, 
+             size = 1) +
+  geom_line(data = mallorca_bike_day7, 
+            aes(x = lon, y = lat, color = ele))+
+  theme_map()+
+  labs(title = "Lisa's Bike Path, 16 March 2018", 
+       subtitle = "Date and Time: {frame_along}",
+       color = "Elevation",
+       x = "",
+       y = "")+
+  theme(legend.position =  "bottom")+
+  transition_reveal(time)+
+  scale_color_viridis_c(option = "inferno")+ 
+  exit_fade()
+```
+
+* I prefer the animation because it told me the exact route
+  
   5. In this exercise, you get to meet Lisa's sister, Heather! She is a proud Mac grad, currently works as a Data Scientist where she uses R everyday, and for a few years (while still holding a full-time job) she was a pro triathlete. You are going to map one of her races. The data from each discipline of the Ironman 70.3 Pan Am championships, Panama is in a separate file - `panama_swim`, `panama_bike`, and `panama_run`. Create a similar map to the one you created with my cycling data. You will need to make some small changes: 1. combine the files putting them in swim, bike, run order (HINT: `bind_rows()`), 2. make the leading dot a different color depending on the event (for an extra challenge, make it a different image using `geom_image()!), 3. CHALLENGE (optional): color by speed, which you will need to compute on your own from the data. You can read Heather's race report [here](https://heatherlendway.com/2016/02/10/ironman-70-3-pan-american-championships-panama-race-report/). She is also in the Macalester Athletics [Hall of Fame](https://athletics.macalester.edu/honors/hall-of-fame/heather-lendway/184) and still has records at the pool. 
   
-```{r}
+```{r,"map of Heather's path of her ironman challenge in Panama"}
+panama <-bind_rows(panama_swim, panama_bike, panama_swim)
 
+panamamap <- get_stamenmap(
+  bbox = c(left = -79.6007, bottom = 8.8892, right = -79.4222, top = 90014),
+  maptype = "terrain-lines",
+  zoom =11)
+
+ggmap(panama)+
+  geom_point(panama, 
+             aes(x = lon, y = lat), 
+             color = "blue", 
+             alpha = 1, 
+             size = 4) +
+  geom_line(panama,
+            aes(x = lon, y = lat))+
+  theme_map()+
+  labs(x = "",
+       y ="",
+       color = "",
+       subtitle = "Date and Time: {frame_along}",
+       title = "Ironman Path")+
+  theme(legend.position = "bottom")+
+  transition_reveal(time)+
+  scale_color_viridis_d(option ="inferno")+
+  exit_fade()
 ```
   
 ## COVID-19 data
@@ -136,7 +251,6 @@ garden_harvest %>%
   * Use the `animate()` function to make the animation 200 frames instead of the default 100 and to pause for 10 frames on the end frame.   
   * Use `group = date` in `aes()`.   
   * Comment on what you see.  
-
 ```{r}
 census_pop_est_2018 <- read_csv("https://www.dropbox.com/s/6txwv3b4ng7pepe/us_census_2018_state_pop_est.csv?dl=1") %>% 
   separate(state, into = c("dot","state"), extra = "merge") %>% 
@@ -146,15 +260,43 @@ census_pop_est_2018 <- read_csv("https://www.dropbox.com/s/6txwv3b4ng7pepe/us_ce
 states_map <- map_data("state")
 ```
 
+
+```{r,"map of the US and the number of cases per 100000 people by population"}
+state_map = map_data("state")
+
+state_gif<-covid19 %>% 
+  arrange(desc(date)) %>% 
+  mutate(state = str_to_lower(state)) %>% 
+  mutate(numberrow=1:n()) %>% 
+  left_join(census_pop_est_2018, by = "state") %>%
+  mutate(new_cases = (cases/est_pop_2018)*10000) %>%
+  ggplot() +
+  geom_map(map = state_map,
+           aes(map_id = state,
+               fill = new_cases)) +
+  #This assures the map looks decently nice:
+  expand_limits(x = state_map$long, y = state_map$lat) +
+  theme_map()+
+  scale_fill_viridis_c(option = "inferno", direction = -1)+
+  labs(title="Most Recent Covid Cases in the USA", caption = "Plot created by Daniel Beidelschies", fill ="Cases", subtitle = "Date: {frame_along}")+
+  transition_reveal(date)
+
+animate(state_gif, nframes = 200, duration = 10)
+```
+
+* We see that over time the midwestern states were the first states that garnered more cases compared to states with bigger populations
+
 ## Your first `shiny` app (for next week!)
 
   7. This app will also use the COVID data. Make sure you load that data and all the libraries you need in the `app.R` file you create. You should create a new project for the app, separate from the homework project. Below, you will post a link to the app that you publish on shinyapps.io. You will create an app to compare states' daily number of COVID cases per 100,000 over time. The x-axis will be date. You will have an input box where the user can choose which states to compare (`selectInput()`), a slider where the user can choose the date range, and a submit button to click once the user has chosen all states they're interested in comparing. The graph should display a different line for each state, with labels either on the graph or in a legend. Color can be used if needed. 
   
-Put the link to your app here: 
+Put the link to your app here: https://daniel-beidelschies.shinyapps.io/app_ex_5/?_ga=2.240558979.1208563929.1648754543-1644272562.1648581272
   
 ## GitHub link
 
   8. Below, provide a link to your GitHub repo with this set of Weekly Exercises. 
+  
+https://github.com/Dbeidels/DS-112_exercise5
 
 
 **DID YOU REMEMBER TO UNCOMMENT THE OPTIONS AT THE TOP?**

@@ -1,0 +1,13 @@
+name: app_ex_5
+title: app_ex_5
+username:
+account: daniel-beidelschies
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5984904
+bundleId: 5751103
+url: https://daniel-beidelschies.shinyapps.io/app_ex_5/
+when: 1648754714.84649
+lastSyncTime: 1648754714.84649
+asMultiple: FALSE
+asStatic: FALSE
